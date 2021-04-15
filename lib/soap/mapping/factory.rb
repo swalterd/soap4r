@@ -125,7 +125,7 @@ class StringFactory_ < Factory
   end
 end
 
-class FixnumFactory_ < Factory
+class IntegerFactory_ < Factory
   def obj2soap(soap_class, obj, info, map)
     soap_obj = nil
     begin

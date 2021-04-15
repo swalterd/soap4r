@@ -168,7 +168,7 @@ module MarshalTestLib
     marshal_equal(0x4000_0000_0000_0000)
   end
 
-  def test_fixnum
+  def test_integer
     marshal_equal(-0x4000_0000)
     marshal_equal(-0x3fff_ffff)
     marshal_equal(-1)
@@ -177,7 +177,7 @@ module MarshalTestLib
     marshal_equal(0x3fff_ffff)
   end
 
-  def test_fixnum_ivar
+  def test_integer_ivar
     o1 = 1
     o1.instance_eval { @iv = 2 }
     marshal_equal(o1) {|o| o.instance_eval { @iv }}
@@ -185,7 +185,7 @@ module MarshalTestLib
     1.instance_eval { remove_instance_variable("@iv") }
   end
 
-  def test_fixnum_ivar_self
+  def test_integer_ivar_self
     o1 = 1
     o1.instance_eval { @iv = 1 }
     marshal_equal(o1) {|o| o.instance_eval { @iv }}
@@ -290,7 +290,7 @@ module MarshalTestLib
     class MyStruct
       def ==(rhs)
 	return true if __id__ == rhs.__id__
-	return false unless rhs.is_a?(::Struct) 
+	return false unless rhs.is_a?(::Struct)
 	return false if self.class != rhs.class
 	members.each do |member|
 	  return false if self.__send__(member) != rhs.__send__(member)
@@ -478,7 +478,7 @@ module MarshalTestLib
     class MyStruct2
       def ==(rhs)
 	return true if __id__ == rhs.__id__
-	return false unless rhs.is_a?(::Struct) 
+	return false unless rhs.is_a?(::Struct)
 	return false if self.class != rhs.class
 	members.each do |member|
 	  return false if self.__send__(member) != rhs.__send__(member)
