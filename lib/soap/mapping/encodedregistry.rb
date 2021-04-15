@@ -123,7 +123,7 @@ class EncodedRegistry
 
   StringFactory = StringFactory_.new
   BasetypeFactory = BasetypeFactory_.new
-  FixnumFactory = FixnumFactory_.new
+  IntegerFactory = IntegerFactory_.new
   DateTimeFactory = DateTimeFactory_.new
   ArrayFactory = ArrayFactory_.new
   Base64Factory = Base64Factory_.new
@@ -147,7 +147,7 @@ class EncodedRegistry
       {:derived_class => true}],
     [::Float,        ::SOAP::SOAPFloat,      BasetypeFactory,
       {:derived_class => true}],
-    [::Fixnum,       ::SOAP::SOAPInt,        FixnumFactory],
+    [::Integer,       ::SOAP::SOAPInt,        IntegerFactory],
     [::Integer,      ::SOAP::SOAPInt,        BasetypeFactory,
       {:derived_class => true}],
     [::Integer,      ::SOAP::SOAPLong,       BasetypeFactory,
@@ -213,7 +213,7 @@ class EncodedRegistry
       {:derived_class => true}],
     [::Float,        ::SOAP::SOAPFloat,      BasetypeFactory,
       {:derived_class => true}],
-    [::Fixnum,       ::SOAP::SOAPInt,        FixnumFactory],
+    [::Integer,       ::SOAP::SOAPInt,        IntegerFactory],
     [::Integer,      ::SOAP::SOAPInt,        BasetypeFactory,
       {:derived_class => true}],
     [::Integer,      ::SOAP::SOAPLong,       BasetypeFactory,
@@ -410,7 +410,7 @@ private
   end
 
   def addextend2soap(node, obj)
-    return if obj.is_a?(Symbol) or obj.is_a?(Fixnum)
+    return if obj.is_a?(Symbol) or obj.is_a?(Integer)
     list = (class << obj; self; end).ancestors - obj.class.ancestors
     unless list.empty?
       node.extraattr[RubyExtendName] = list.collect { |c|

@@ -4,9 +4,9 @@
 require 'rubygems'
 SPEC = Gem::Specification.new do |s|
   s.name = "mumboe-soap4r"
-  s.version = "1.5.8.7"
-  s.date = "2013-12-01"
-  s.author = "Scott Diedrick (modifier: swalterd)"
+  s.version = "1.6.0-beta"
+  s.date = "2021-02-08"
+  s.author = "Scott Diedrick (modifier: lacostenycoder)"
   s.email = "swalterd@gmail.com"
   s.homepage = "https://github.com/mumboe/soap4r"
   s.platform = Gem::Platform::RUBY
@@ -16,7 +16,5 @@ SPEC = Gem::Specification.new do |s|
   s.executables = [ "wsdl2ruby.rb", "xsd2ruby.rb" ]
   # don't reference the test until we see it execute fully and successfully
   s.test_file = "test/runner.rb"
-  # disable rdoc generation until we've got more
-  s.has_rdoc = false
   s.add_dependency("httpclient", ">= 2.1.1")
 end
